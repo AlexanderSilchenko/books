@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--xmlns:th="http://thymeleaf.org" нужен для того, чтобы работал Thymeleaf-->
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все книги</title>
+</head>
+<body>
+
+    <h1>На этой странице index.html вы увидите все книги</h1>
+
+    <div th:each="book : ${books}">
+        <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getWriter()}">Blablabla</a>
+    </div>
+
+    <hr>
+    
+    <div>
+        <a th:href="@{/books/new}">Добавить книгу</a>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Редактирование записи</title>
+
+</head>
+<body>
+
+<p style="color: darkred;">
+  В файле application.properties нужно добавить строчку:
+  spring.mvc.hiddenmethod.filter.enabled=true
+</p>
+
+
+  <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+    <div>
+      <label for="writer">Автор</label>
+      <input type="text" th:field="*{writer}" id="writer">
+      <div th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}" class="error"></div>
+
+    </div>
+
+    <div>
+      <label for="title">Название</label>
+      <input type="text" th:field="*{title}" id="title">
+      <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error"></div>
+
+    </div>
+
+    <div>
+      <label for="genre">Жанр</label>
+      <input type="text" th:field="*{genre}" id="genre">
+      <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" class="error"></div>
+
+    </div>
+
+    <input type="submit" value="Submit">
+  </form>
+
+</body>
+</html>
